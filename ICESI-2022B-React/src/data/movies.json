@@ -1,0 +1,37 @@
+[
+    {
+      "_id": "630807c282aa405b36af3618",
+      "title": "mollit id id fugiat reprehenderit",
+      "descripcion": "amet consequat ullamco tempor incididunt dolor ex occaecat aliqua aliquip ipsum nisi eu tempor ea magna do dolore veniam ipsum aliqua occaecat incididunt proident veniam consectetur excepteur dolore magna non adipisicing ipsum labore qui ipsum non ad veniam non culpa",
+      "genero": "suspenso",
+      "duracion": 161
+    },
+    {
+      "_id": "630807c2eddfe074064507c6",
+      "title": "labore fugiat magna reprehenderit velit",
+      "descripcion": "aliqua voluptate velit eu ad cillum incididunt est proident sint minim est elit velit laboris cillum ullamco elit ea exercitation pariatur commodo ea do est cupidatat qui ullamco dolore ea consequat aute aute officia pariatur aliqua fugiat dolor ex veniam",
+      "genero": "suspenso",
+      "duracion": 92
+    },
+    {
+      "_id": "630807c21de49c1c7df8e79a",
+      "title": "aute labore duis ex ea",
+      "descripcion": "magna ipsum veniam do ea laboris et voluptate magna minim pariatur ipsum ipsum sunt qui cupidatat eiusmod duis quis proident elit irure occaecat sit Lorem do culpa non enim commodo dolore eu anim ut tempor commodo minim laboris tempor sit",
+      "genero": "thriller",
+      "duracion": 199
+    },
+    {
+      "_id": "630807c20b0fde1de6cd2cb6",
+      "title": "commodo mollit ut laboris reprehenderit",
+      "descripcion": "id ut velit quis cupidatat mollit non esse ullamco quis occaecat labore laborum velit exercitation proident quis excepteur consequat laboris occaecat velit duis labore anim anim cillum Lorem nostrud in exercitation excepteur cupidatat pariatur consectetur consequat elit voluptate amet cillum",
+      "genero": "accion",
+      "duracion": 147
+    },
+    {
+      "_id": "630807c2c83ad2b18149b69c",
+      "title": "commodo irure anim esse qui",
+      "descripcion": "cillum laboris mollit reprehenderit sit ea irure aliqua deserunt amet in irure adipisicing commodo adipisicing Lorem eiusmod aliquip eu adipisicing aliqua ex amet Lorem laboris ut occaecat tempor nulla quis cupidatat aliqua anim cillum non labore ad laborum ad non",
+      "genero": "thriller",
+      "duracion": 240
+    }
+  ]
