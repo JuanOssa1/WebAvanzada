@@ -38,16 +38,6 @@ function MovieForm({addMovie}) {
         ></TextField>
       </div>
       <div>
-        <TextField
-          id="standard-basic"
-          label="Descipcion"
-          multiline
-          variant="standard"
-          onChange={(e)=> setDescripcion(e.target.value)}
-          value={descripcion}
-        ></TextField>
-      </div>
-      <div>
       <TextField
         id="standard-basic"
         label="Duracion"
@@ -66,7 +56,18 @@ function MovieForm({addMovie}) {
         value={genero}
       ></TextField>
       </div>
-      <Button onClick={handleClick}>Guardar pelicula</Button>
+      <div>
+        <TextField
+          id="standard-basic"
+          label="Descipcion"
+          multiline
+          variant="standard"
+          onChange={(e)=> setDescripcion(e.target.value)}
+          value={descripcion}
+          rows={4}
+        ></TextField>
+      </div>
+      <Button onClick={handleClick} variant="contained" color="success">Guardar pelicula</Button>
 
       
       
