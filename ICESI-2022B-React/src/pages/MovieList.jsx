@@ -14,6 +14,8 @@ import MovieRow from "../components/MovieRow";
 function MovieList({ owner }) {
 
     const[movieList, setMovieList] = useState(movies)
+    const[movieEdit, setMovieListEdit] = useState({})
+
     const handleDelete = (id) => {
       // const indice = movieList.findIndex((movie)=>movie._id===id)
       // const lista = [...movieList]
@@ -25,7 +27,7 @@ function MovieList({ owner }) {
     }
   const renderMovies = () => {
     return movieList.map((movie) => (
-      <MovieRow key={movie._id} row={movie} handleDelete={handleDelete}/>
+      <MovieRow key={movie._id} row={movie} handleDelete={handleDelete} handleEdit={handleEdit}/>
     ));
   };
   const addMovie = (movie) => {
@@ -33,6 +35,9 @@ function MovieList({ owner }) {
     movies.push(movie);
     console.log(movies)
     setMovieList(movies);
+  }
+  const handleEdit = (row) => {
+    console.log(row)
   }
   
   return (

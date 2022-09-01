@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {TextField, Box, Button} from '@mui/material';
 
-function MovieRow({row, handleDelete}) {
+function MovieRow({row, handleDelete, handleEdit}) {
 
     const handleClickDelete= () =>{
         handleDelete(row._id)
@@ -23,8 +23,11 @@ function MovieRow({row, handleDelete}) {
       <TableCell>{row.titulo}</TableCell>
       <TableCell align="right">{row.duracion}</TableCell>
       <TableCell>{row.genero}</TableCell>
-      <TableCell>{row.descripcion}</TableCell>
-      <TableCell><Button onClick={handleClickDelete} variant="contained" color="error">Eliminar</Button></TableCell>
+      <TableCell>{row.descripcion.substring(0,50)}</TableCell>
+      <TableCell>
+      <Button  sx={{mr:2}} onClick={()=>{handleEdit(row)}} variant="contained" color="primary">Editar</Button>
+      <Button onClick={handleClickDelete} variant="contained" color="error">Eliminar</Button>
+      </TableCell>
     </TableRow>
   );
 }
