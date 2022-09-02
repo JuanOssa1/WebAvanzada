@@ -10,11 +10,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import MovieRow from "../components/MovieRow";
+import firebase from '../config/firebase'
 
 function MovieList({ owner }) {
 
     const[movieList, setMovieList] = useState(movies)
-    const[movieEdit, setMovieListEdit] = useState({})
+    const[movieEdit, setMovieListEdit] = useState({id:"", title:"", descripcion:"", duracion:"", genero:""})
 
     const handleDelete = (id) => {
       // const indice = movieList.findIndex((movie)=>movie._id===id)
@@ -32,17 +33,28 @@ function MovieList({ owner }) {
   };
   const addMovie = (movie) => {
     var movies = [...movieList]
-    movies.push(movie);
+    let _id = Math.floor(Math.random()*10000000)
+    if(movie._id===""){
+      movie._id = _id
+      movies.push(movie);
+    } else{
+      const indice = movieList.findIndex((item)=>item._id===movie._id)
+      movies[indice] =  movie
+
+    }
+    
+    
     console.log(movies)
     setMovieList(movies);
   }
   const handleEdit = (row) => {
-    console.log(row)
+    setMovieListEdit(row)
   }
   
   return (
     <div>
       <h1>Favoritos de {owner}</h1>
+      <MovieForm addMovie={addMovie} movieEdit={movieEdit}/>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -60,7 +72,7 @@ function MovieList({ owner }) {
         </TableBody>
         </Table>
         </TableContainer>
-      <MovieForm addMovie={addMovie} />
+      
     </div>
   );
 }

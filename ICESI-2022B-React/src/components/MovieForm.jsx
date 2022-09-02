@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import {TextField, Box, Button} from '@mui/material';
 
 
-function MovieForm({addMovie}) {
+function MovieForm({addMovie, movieEdit}) {
+  //const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [duracion, setDuracion] = useState("");
   const [genero, setGenero] = useState("");
   
   const handleClick = () => {
-    let _id = Math.random()*10000000
-    let movie = {_id, title, descripcion, duracion, genero}
+    
+    let movie = {_id:movieEdit._id, title, descripcion, duracion, genero}
     setTitle("")
     setDescripcion("")
     setDuracion("")
     setGenero("")
     addMovie(movie)
   }
+
+  useEffect(()=>{
+    setTitle(movieEdit.title)
+    setDescripcion(movieEdit.descripcion)
+    setDuracion(movieEdit.duracion)
+    setGenero(movieEdit.genero)
+  } , [movieEdit])
 
   return (
     <Box
