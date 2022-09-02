@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import movies from "../data/movies.json";
+import {getFirestore,collection,getDocs, setDoc, doc,deleteDoc} from "firebase/firestore"
+//import movies from "../data/movies.json";
 import MovieForm from "../components/MovieForm";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,18 +15,46 @@ import firebase from '../config/firebase'
 
 function MovieList({ owner }) {
 
-    const[movieList, setMovieList] = useState(movies)
-    const[movieEdit, setMovieListEdit] = useState({id:"", title:"", descripcion:"", duracion:"", genero:""})
+    const[movieList, setMovieList] = useState([])
+    const[movieEdit, setMovieListEdit] = useState({_id:"", title:"", descripcion:"", duracion:"", genero:""})
+
+    const firebaseDb = getFirestore(firebase)
+    
+    const getMovies = async() => {
+      
+      const moviesCol = collection(firebaseDb, 'movies')
+      const movieSnapshot = await getDocs(moviesCol) 
+      const moviesFirebase = movieSnapshot.docs.map(doc => doc.data())
+      return moviesFirebase
+    }
+
+
+    getMovies().then(res=>setMovieList(res))
+
+
+
+
+
+
 
     const handleDelete = (id) => {
-      // const indice = movieList.findIndex((movie)=>movie._id===id)
-      // const lista = [...movieList]
-      // lista.slice(indice,1)
-      // setMovieList
+
+      deleteDoc(doc(firebaseDb, "movies",id+"")).then(()=>{
+        getMovies().then(res=>setMovieList(res))
+
+      })
+
+
 
       setMovieList(movieList.filter((movie) => movie._id !== id))
       console.log(id)
     }
+
+
+
+
+
+
   const renderMovies = () => {
     return movieList.map((movie) => (
       <MovieRow key={movie._id} row={movie} handleDelete={handleDelete} handleEdit={handleEdit}/>
@@ -33,11 +62,19 @@ function MovieList({ owner }) {
   };
   const addMovie = (movie) => {
     var movies = [...movieList]
+    console.log(movie)
     let _id = Math.floor(Math.random()*10000000)
     if(movie._id===""){
       movie._id = _id
-      movies.push(movie);
-    } else{
+    }
+      setDoc(doc(firebaseDb, "movies", movie._id+""), movie).then(()=>{
+        getMovies().then(res=>setMovieList(res))
+
+      })
+      //movies.push(movie);
+    
+    /* 
+    else{
       const indice = movieList.findIndex((item)=>item._id===movie._id)
       movies[indice] =  movie
 
@@ -45,6 +82,7 @@ function MovieList({ owner }) {
     
     
     console.log(movies)
+    */
     setMovieList(movies);
   }
   const handleEdit = (row) => {
