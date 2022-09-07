@@ -11,14 +11,14 @@ import {TextField, Box, Button} from '@mui/material';
 function MovieRow({row, handleDelete, handleEdit}) {
 
     const handleClickDelete= () =>{
-        handleDelete(row._id)
+        handleDelete(row.id)
     }
   return (
     <TableRow
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row">
-        {row._id}
+        {row.id}
       </TableCell>
       <TableCell>{row.titulo}</TableCell>
       <TableCell align="right">{row.duracion}</TableCell>

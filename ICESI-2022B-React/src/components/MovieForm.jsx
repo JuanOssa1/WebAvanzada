@@ -12,7 +12,7 @@ function MovieForm({addMovie, movieEdit}) {
   
   const handleClick = () => {
     
-    let movie = {_id:movieEdit._id, title, descripcion, duracion, genero}
+    let movie = {id:movieEdit.id, title, descripcion, duracion, genero}
     setTitle("")
     setDescripcion("")
     setDuracion("")

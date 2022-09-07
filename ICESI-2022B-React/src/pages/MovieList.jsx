@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState} from "react";
 import {getFirestore,collection,getDocs, setDoc, doc,deleteDoc} from "firebase/firestore"
 //import movies from "../data/movies.json";
 import MovieForm from "../components/MovieForm";
@@ -11,27 +11,39 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import MovieRow from "../components/MovieRow";
-import firebase from '../config/firebase'
+//import firebase from '../config/firebase'
+import axios from '../config/axios'
+import { useEffect } from "react";
 
 function MovieList({ owner }) {
 
     const[movieList, setMovieList] = useState([])
-    const[movieEdit, setMovieListEdit] = useState({_id:"", title:"", descripcion:"", duracion:"", genero:""})
+    const[movieEdit, setMovieListEdit] = useState({id:"", title:"", descripcion:"", duracion:"", genero:""})
 
-    const firebaseDb = getFirestore(firebase)
+//    const firebaseDb = getFirestore(firebase)
     
     const getMovies = async() => {
-      
+  /*    
       const moviesCol = collection(firebaseDb, 'movies')
       const movieSnapshot = await getDocs(moviesCol) 
       const moviesFirebase = movieSnapshot.docs.map(doc => doc.data())
-      return moviesFirebase
+      */
+     axios.get("movies").then((res)=>{
+      setMovieList(res.data)
+      if(res.data)
+        setMovieList(res.data)
+     })
+      //return moviesFirebase
     }
+    
 
 
-    getMovies().then(res=>setMovieList(res))
+    //.then(res=>setMovieList(res))
+    useEffect(()=>{
+      getMovies(),[]
+    })
 
-
+//getMovies()
 
 
 
@@ -39,15 +51,17 @@ function MovieList({ owner }) {
 
     const handleDelete = (id) => {
 
-      deleteDoc(doc(firebaseDb, "movies",id+"")).then(()=>{
-        getMovies().then(res=>setMovieList(res))
+      // deleteDoc(doc(firebaseDb, "movies",id+"")).then(()=>{
+      //   getMovies().then(res=>setMovieList(res))
 
-      })
+      // })
+      let url = "movies/"+id
+      axios.delete(url).then((res)=>{if(res.status===200) getMovies()})
 
 
 
-      setMovieList(movieList.filter((movie) => movie._id !== id))
-      console.log(id)
+      // setMovieList(movieList.filter((movie) => movie.id !== id))
+      // console.log(id)
     }
 
 
@@ -57,25 +71,35 @@ function MovieList({ owner }) {
 
   const renderMovies = () => {
     return movieList.map((movie) => (
-      <MovieRow key={movie._id} row={movie} handleDelete={handleDelete} handleEdit={handleEdit}/>
+      <MovieRow key={movie.id} row={movie} handleDelete={handleDelete} handleEdit={handleEdit}/>
     ));
   };
   const addMovie = (movie) => {
     var movies = [...movieList]
     console.log(movie)
-    let _id = Math.floor(Math.random()*10000000)
-    if(movie._id===""){
-      movie._id = _id
+    let id = Math.floor(Math.random()*10000000)
+    if(movie.id===""){
+      movie.id = id
+      axios.post("movies", movie).then(
+        (res)=>{
+          if(res.status==201)
+            getMovies()
+        } 
+      )
+    } else {
+      let url = "movies/"+movie.id
+      axios.put(url, movie).then((res)=>{if(res.status===200) getMovies()})
     }
-      setDoc(doc(firebaseDb, "movies", movie._id+""), movie).then(()=>{
-        getMovies().then(res=>setMovieList(res))
 
-      })
+      // setDoc(doc(firebaseDb, "movies", movie.id+""), movie).then(()=>{
+      //   getMovies().then(res=>setMovieList(res))
+
+      // })
       //movies.push(movie);
     
     /* 
     else{
-      const indice = movieList.findIndex((item)=>item._id===movie._id)
+      const indice = movieList.findIndex((item)=>item.id===movie.id)
       movies[indice] =  movie
 
     }

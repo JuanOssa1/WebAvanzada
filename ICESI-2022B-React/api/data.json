@@ -1,5 +1,5 @@
 {
-"movies":[
+  "movies": [
     {
       "id": "630807c282aa405b36af3618",
       "title": "mollit id id fugiat reprehenderit",
@@ -13,13 +13,6 @@
       "descripcion": "aliqua voluptate velit eu ad cillum incididunt est proident sint minim est elit velit laboris cillum ullamco elit ea exercitation pariatur commodo ea do est cupidatat qui ullamco dolore ea consequat aute aute officia pariatur aliqua fugiat dolor ex veniam",
       "genero": "suspenso",
       "duracion": 92
-    },
-    {
-      "id": "630807c21de49c1c7df8e79a",
-      "title": "aute labore duis ex ea",
-      "descripcion": "magna ipsum veniam do ea laboris et voluptate magna minim pariatur ipsum ipsum sunt qui cupidatat eiusmod duis quis proident elit irure occaecat sit Lorem do culpa non enim commodo dolore eu anim ut tempor commodo minim laboris tempor sit",
-      "genero": "thriller",
-      "duracion": 199
     },
     {
       "id": "630807c20b0fde1de6cd2cb6",
