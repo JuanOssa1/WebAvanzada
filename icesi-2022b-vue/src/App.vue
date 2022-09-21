@@ -1,50 +1,77 @@
 <template>
-  <v-app>
-    <main :class="{ 'orange-green': themeSwitched }">
-      <div class="app-container">
-        <header class="app-header dark-brown">
-          <h1>My Pet Store</h1>
-          <v-btn @click="themeSwitched = !themeSwitched">Switch theme</v-btn>
-        </header>
-        <v-toolbar>
-          <v-toolbar-items>
-            <v-btn to="/" text>Home</v-btn>
-            <v-btn to="/pets" text>Pets</v-btn>
-          </v-toolbar-items>
-          <v-spacer></v-spacer>
-          <router-link to="/favorites">
-            <v-badge
-              color="grey lighten-1"
-              overlap
-              right
-              v-model="favorites.length"
-            >
-              <template #badge>
-                {{ favorites.length }}
-              </template>
-              <v-icon large> loyalty </v-icon>
-            </v-badge>
-          </router-link>
-        </v-toolbar>
-        <error></error>
-        <router-view></router-view>
-        <footer class="app-footer dark-brown">
-          <p>123 Main Street | Smithfield, RI 90987 | 345-456-5678</p>
-        </footer>
-      </div>
-    </main>
-  </v-app>
+	<v-app>
+		<main :class="{'orange-green':themeSwitched}">
+			<div class="app-container">
+				<header class="app-header dark-brown">
+					<h1>My Pet Store</h1>
+          <v-btn @click="themeSwitched = !themeSwitched">Switch Theme</v-btn>
+				</header>
+				<div class="wrapper">
+					<div class="panel tall-panel light-mint">
+						<h2>Pet Products</h2>
+						<p>Premium Puppy Chow</p>
+						<p>Kibble, sale in bulk, $20/lb</p>
+						<img
+							src="https://raw.githubusercontent.com/FrontEndFoxes/projects/main/petshop/images/food.png"
+						/>
+					</div>
+					<div class="panel bisque">
+						<h2>Donate</h2>
+					</div>
+					<div class="panel tall-panel light-brown">
+						<h2>Adoptable Pets</h2>
+						<p>Fisher, Chihuahua, age 3</p>
+						<img
+							src="https://raw.githubusercontent.com/FrontEndFoxes/projects/main/petshop/images/chihuahua.jpg"
+						/>
+					</div>
+
+					<div class="panel bisque">
+						<h2>Contact Us</h2>
+					</div>
+					<div class="panel tall-panel dark-mint">
+						<h2>Pet of the Month</h2>
+						<p>Meet Stanley, A young French Bulldog</p>
+						<img
+							src="https://raw.githubusercontent.com/FrontEndFoxes/projects/main/petshop/images/bulldog.jpg"
+						/>
+					</div>
+					<div class="panel tall-panel light-mint">
+						<h2>Success Stories</h2>
+						<p>Bennie found his forever home!</p>
+						<img
+							src="https://raw.githubusercontent.com/FrontEndFoxes/projects/main/petshop/images/collie.jpg"
+						/>
+					</div>
+
+					<div class="panel bisque">
+						<h2>Special Events</h2>
+					</div>
+
+					<div class="panel bisque">
+						<h2>Learn About Pet Ownership</h2>
+					</div>
+				</div>
+				<footer class="app-footer dark-brown">
+					<p>123 Main Street | Smithfield, RI 90987 | 345-456-5678</p>
+				</footer>
+			</div>
+		</main>
+	</v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+
+  name: "App",
+  data(){
+    return{
+      themeSwitched: false,
+    };
   }
-}
+};
 </script>
 
 <style lang="scss">
