@@ -6,6 +6,7 @@
 					<h1>My Pet Store</h1>
           <v-btn @click="themeSwitched = !themeSwitched">Switch Theme</v-btn>
 				</header>
+        <router-view></router-view>
 				<div class="wrapper">
 					<div class="panel tall-panel light-mint">
 						<h2>Pet Products</h2>
