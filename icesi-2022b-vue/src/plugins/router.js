@@ -2,6 +2,7 @@ import VueRouter from "vue-router";
 import Vue from 'vue';
 import HomeView from "../views/HomeView"
 import PetsView from "../views/PetsView"
+import FavoritesView from "../views/FavoritesView.vue"
 
 
 Vue.use(VueRouter);
@@ -15,6 +16,10 @@ const routes=[
         path: "/pets",
         component: PetsView,
     },
+    {
+        path:"/favorites",
+        component: FavoritesView
+    }
 ];
 
 const router = new VueRouter({

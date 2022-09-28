@@ -8,6 +8,7 @@
       </div>
     </v-card-title>
     <v-img :src="img" height="170px"></v-img>
+    <v-btn @click="$emit('addFavorites', dog)">Add to fav</v-btn>
   </v-card>
 </template>
 <script>
